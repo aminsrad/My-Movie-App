@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-
 const Movieform = ({ movies }) => {
   const [title, setTitle] = useState("");
-  const [categorie, setCategorie] = useState("");
-  const [language, setLanguage] = useState();
-  const [year, setYear] = useState("");
-  const [rate, setRate] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [status, setstatus] = useState("");
+  const [description, setDescription] = useState("");
+  const [posterURL, setposterURL] = useState("");
+  const [status, setStatus] = useState("");
 
   return (
     <div>
@@ -32,87 +28,60 @@ const Movieform = ({ movies }) => {
           />
         </div>
         <div className="mb-3">
-          <label for="Category" className="form-label">
-            Category
+          <label for="Description" className="form-label">
+            Description
           </label>
           <input
             type="text"
             className="form-control"
-            onChange={(e) => setCategorie(e.target.value)}
-            value={categorie}
-          />
-        </div>
-        <div className="mb-3">
-          <label for="Language" className="form-label">
-            Language
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setLanguage(e.target.value)}
-            value={language}
-          />
-        </div>
-        <div className="mb-3">
-          <label for="Year" className="form-label">
-            Year
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setYear(e.target.value)}
-            value={year}
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
           />
         </div>
 
         <div className="mb-3">
-          <label for="Status" className="form-label">
-            Image source:
+          <label for="posterURL" className="form-label">
+            posterURL:
           </label>
           <input
             type="text"
             className="form-control"
-            onChange={(e) => setPhoto(e.target.value)}
-            value={photo}
-          />
-        </div>
-        <div className="mb-3">
-          <label for="Rate" className="form-label">
-            Rate
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setRate(e.target.value)}
-            value={rate}
+            onChange={(e) => setposterURL(e.target.value)}
+            value={posterURL}
           />
         </div>
         <div className="mb-3">
           <label for="Status" className="form-label">
             Status
           </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setstatus(e.target.value)}
+
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            onChange={(e) => setStatus(e.target.value)}
             value={status}
-          />
+          >
+            <option selected>What is the movie status?</option>
+            <option value="Available">Available</option>
+            <option value="Saled">Saled</option>
+          </select>
         </div>
         <button
           type="submit"
           className="btn btn-primary"
           onClick={(e) => {
             e.preventDefault();
-            movies({ title, categorie, language, year, photo, rate, status });
-            alert("movie added");
+            movies({
+              title,
+              description,
+              posterURL,
+              status,
+            });
+            alert("movie added ");
             setTitle("");
-            setCategorie("");
-            setLanguage("");
-            setYear("");
-            setPhoto("");
-            setRate("");
-            setRate("");
-            setstatus("");
+            setDescription("");
+            setposterURL("");
+            setStatus("");
           }}
         >
           Submit
